@@ -1,14 +1,18 @@
 import './TextArea.css';
 
 const TextArea = ({label, value, onChange, placeholder}) => {
+    const handleChange = (event) => {
+        onChange(event.target.value);
+    }
+
     return (
         <div className="text-area">
             <label>{label}</label>
             <textarea
                 value={value}
-                onChange={onChange} 
+                onChange={handleChange} 
                 placeholder={placeholder}>
-                </textarea>
+            </textarea>
         </div>
     );
 };

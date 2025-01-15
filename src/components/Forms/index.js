@@ -1,10 +1,11 @@
+import { use, useState } from 'react';
 import Button from '../Button';
 import ListSuspended from '../ListSuspended';
 import TextArea from '../TextArea';
 import TextField from '../TextField';
 import './Forms.css';
 
-const Forms = () => {
+const Forms = (props) => {
 
     const teams = [
     'Front-End', 
@@ -16,24 +17,64 @@ const Forms = () => {
     'Inovação e Gestão'
     ]
 
+const [nome, setNome] = useState('')
+const [idade, setIdade] = useState('')
+const [formacao, setFormacao] = useState('')
+const [interesse, setInteresse] = useState('')
+const [time, setTime] = useState('')
+
 const toSave = (event) => {
     event.preventDefault();
-    console.log('Formulario enviado');
+    props.devCadastrados({
+        nome, 
+        idade, 
+        formacao, 
+        interesse, 
+        time
+    })
 }  
 
     return (
         <section className='forms'>
             <form onSubmit={toSave}>
                 <h2>Preencha os dados para se cadastrar</h2>
-                <TextField mandatory={true} label="Nome" placeholder="Digite seu nome" />
-                <TextField mandatory={true} label="Idade" placeholder="Digite sua idade" />
-                <TextField mandatory={true} label="Formação" placeholder="Digite a sua formação" />
-                <TextArea
-                label="Por que se interessou por dev?" 
-                placeholder="Escreva aqui sua resposta"
+                <TextField
+                    mandatory={true}
+                    label="Nome" 
+                    placeholder="Digite seu nome" 
+                    values={nome}
+                    changed={values => setNome(values)} 
                 />
-                <ListSuspended mandatory={true} label="Qual seu time?" options={teams}/>
-                <Button>cadastrar</Button>
+                <TextField 
+                    mandatory={true} 
+                    label="Idade" 
+                    placeholder="Digite sua idade" 
+                    values={idade}
+                    changed={values => setIdade(values)}
+                />
+                <TextField 
+                    mandatory={true} 
+                    label="Formação" 
+                    placeholder="Digite a sua formação"
+                    values={formacao}
+                    changed={values => setFormacao(values)} 
+                />
+                <TextArea
+                    label="Por que se interessou por dev?" 
+                    placeholder="Escreva aqui sua resposta"
+                    value={interesse}
+                    onChange={values => setInteresse(values)}
+                />
+                <ListSuspended 
+                    mandatory={true} 
+                    label="Qual seu time?"
+                    options={teams}
+                    values={time}
+                    changed={values => setTime(values)}
+                />
+                <Button>
+                    cadastrar
+                </Button>
             </form>
         </section>
     )
