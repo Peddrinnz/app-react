@@ -7,16 +7,6 @@ import './Forms.css';
 
 const Forms = (props) => {
 
-    const teams = [
-    'Front-End', 
-    'Back-End', 
-    'Full-Stack', 
-    'Data Science', 
-    'UX e Design', 
-    'Mobile', 
-    'Inovação e Gestão'
-    ]
-
 const [nome, setNome] = useState('')
 const [idade, setIdade] = useState('')
 const [formacao, setFormacao] = useState('')
@@ -25,14 +15,23 @@ const [time, setTime] = useState('')
 
 const toSave = (event) => {
     event.preventDefault();
-    props.devCadastrados({
-        nome, 
-        idade, 
-        formacao, 
-        interesse, 
-        time
-    })
-}  
+    if (nome !== '' && idade !== '' && formacao !== '' && interesse !== '' && time !== '') {
+        props.devCadastrados({
+            nome, 
+            idade, 
+            formacao, 
+            interesse, 
+            time
+    });
+    setNome('');
+    setIdade('');
+    setFormacao('');
+    setInteresse('');
+    setTime('');
+}  else {
+    alert('Preencha todos os campos');
+    }
+};
 
     return (
         <section className='forms'>
@@ -68,7 +67,7 @@ const toSave = (event) => {
                 <ListSuspended 
                     mandatory={true} 
                     label="Qual seu time?"
-                    options={teams}
+                    options={props.teams}
                     values={time}
                     changed={values => setTime(values)}
                 />

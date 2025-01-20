@@ -1,0 +1,43 @@
+.colaborator {
+    width: 300px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.colaborator:hover{
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.colaborator .name_age {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.colaborator .name_age h4 {
+    font-size: 18px;
+    color: #333333;
+    font-weight: bold;
+    margin: 0;
+}
+
+.colaborator .role {
+    text-align: left;
+}
+
+.colaborator .role h5 {
+    font-size: 16px;
+    color: #9102d4;
+    margin-bottom: 8px;
+}
+
+.colaborator .role p {
+    font-size: 14px;
+    color: #555555;
+    line-height: 1.5;
+    margin: 0;
+}
