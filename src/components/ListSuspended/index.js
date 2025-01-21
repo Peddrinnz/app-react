@@ -1,4 +1,4 @@
-import './ListSuspended.css'
+import './ListSuspended.css';
 
 const ListSuspended = (props) => {
     const handleChange = (event) => {
@@ -13,12 +13,17 @@ const ListSuspended = (props) => {
                 value={props.values} 
                 onChange={handleChange}
             >
-                {props.options && props.options.map((item, index) => {
-                    return <option key={index} value={item}>{item}</option>
-                })}
+                <option value="" disabled>
+                    Selecione uma opção
+                </option>
+                {props.options && props.options.map((item, index) => (
+                    <option key={index} value={item}>
+                        {item}
+                    </option>
+                ))}
             </select>
         </div>
-    )
-}
-   
-export default ListSuspended
+    );
+};
+
+export default ListSuspended;

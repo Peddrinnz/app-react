@@ -1,15 +1,15 @@
 import './Colaborator.css';
 
-const Colaborator = (props) => {
+const Colaborator = ( {name, role, age, interest, backgroundColor} ) => {
     return (
         <div className='colaborator'>
-            <div className='name_age'>
-                <h4>Pedro Ernesto</h4>
-                <h4>20</h4>
+            <div className='name_age' style={{ backgroundColor: backgroundColor }}>
+                <h4>{name}</h4>
+                <h4>{age}</h4>
             </div>
             <div className='role'>
-                <h5>ADS</h5>
-                <p>Me interessei por gostar de programar</p>
+                <h5>{role}</h5>
+                <p>{interest}</p>
             </div>   
         </div>
     )

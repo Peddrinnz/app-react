@@ -9,3 +9,36 @@
     display: inline-block;
     padding-bottom: 8px;
 }
+
+.tean .line{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 32px;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+
+.team .line .colaborator {
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: left;
+    transition: transform 0.3s ease;
+    margin-bottom: 16px;
+}
+
+.team .line .colaborator:hover {
+    transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+    .team .line {
+        justify-content: center; 
+    }
+
+    .team .line .colaborator {
+        width: 100%;
+        margin-bottom: 16px;
+    }
+}

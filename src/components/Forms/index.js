@@ -1,4 +1,4 @@
-import { use, useState } from 'react';
+import { useState } from 'react';
 import Button from '../Button';
 import ListSuspended from '../ListSuspended';
 import TextArea from '../TextArea';
@@ -17,12 +17,13 @@ const toSave = (event) => {
     event.preventDefault();
     if (nome !== '' && idade !== '' && formacao !== '' && interesse !== '' && time !== '') {
         props.devCadastrados({
-            nome, 
-            idade, 
-            formacao, 
-            interesse, 
-            time
+            name: nome.trim(), 
+            age: idade.trim(), 
+            role: formacao.trim(), 
+            interest: interesse.trim(), 
+            time: time.trim(),
     });
+
     setNome('');
     setIdade('');
     setFormacao('');
@@ -69,7 +70,10 @@ const toSave = (event) => {
                     label="Qual seu time?"
                     options={props.teams}
                     values={time}
-                    changed={values => setTime(values)}
+                    changed={values => {
+                        console.log(values);
+                        setTime(values.trim());
+                    }}    
                 />
                 <Button>
                     cadastrar

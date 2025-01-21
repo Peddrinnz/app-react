@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Banner from './components/Banner/Banner.js';
 import Forms from './components/Forms';
 import Team from './components/team/index.js';
+import Footer from './components/Footer/index.js';
 
 function App() {
 
@@ -46,7 +47,6 @@ function App() {
   const [devs, setDevs] = useState([]);
 
   const newDev = (dev) => {
-    console.log(dev);
     setDevs([...devs, dev]);
   }
 
@@ -60,9 +60,10 @@ function App() {
         name={team.nome} 
         corPrimaria={team.corPrimaria} 
         corSecundaria={team.corSecundaria}
-        devs={devs.filter(dev => dev.time === team.nome)} 
+        devs={devs.filter(dev => dev.time.trim() === team.nome.trim())} 
       />
     ))}
+    <Footer />
     </div>
   );
 }
