@@ -50,6 +50,10 @@ function App() {
     setDevs([...devs, dev]);
   }
 
+  function deleteDev(dev) {
+    setDevs(devs.filter(d => d.name !== dev.name));
+  }
+
   return (
     <div className="App">
       <Banner />
@@ -60,7 +64,8 @@ function App() {
         name={team.nome} 
         corPrimaria={team.corPrimaria} 
         corSecundaria={team.corSecundaria}
-        devs={devs.filter(dev => dev.time.trim() === team.nome.trim())} 
+        devs={devs.filter(dev => dev.time.trim() === team.nome.trim())}
+        delete={deleteDev}
       />
     ))}
     <Footer />
